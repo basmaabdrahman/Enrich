@@ -142,9 +142,13 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'name' => [
+            'required' => 'A Course Name is required',
+            'unique'=>'we already have this course',
         ],
+        'price'=>[
+            'required' => 'A Price is required',
+            ],
     ],
 
     /*
