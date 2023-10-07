@@ -36,15 +36,9 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
-        $validate=$request->validate([
-           'name'=>'required|unique:courses',
-           'content'=> 'required',
-            'price'=>'required',
-        ],[
-            'name.message'=>'name has been added before',
-        ]);
+        $validated = $request->validated();
 
         Course::create([
             'name'=>$request['name'],

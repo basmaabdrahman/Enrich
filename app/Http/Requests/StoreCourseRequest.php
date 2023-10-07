@@ -11,10 +11,7 @@ class StoreCourseRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
-    {
-        return false;
-    }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,9 +21,15 @@ class StoreCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|unique|max:255',
+            'name'=>'required|unique:courses|max:255',
             'content'=>'required',
             'price'=>'required',
         ];
     }
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+
 }

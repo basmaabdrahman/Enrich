@@ -3,6 +3,15 @@
     New Course
 @endsection
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div >
         <div class="card">
             <div class="card-header">
@@ -30,8 +39,7 @@
                         <div class="col-md-3 px-md-1">
                             <div class="form-group">
                                 <label>Course Content</label>
-                                <textarea name="content"  class="form-control" placeholder="write course content" required></textarea>
-                            </div>
+                                <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" name="content">   </textarea>                      </div>
                         </div>
                     </div>
 

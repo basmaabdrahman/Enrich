@@ -25,5 +25,10 @@ Route::get('/courses/edit/{id}',[CourseController::class,'edit'])->name('courses
 Route::post('/courses/{id}',[CourseController::class,'update'])->name('courses.update');
 Route::get('/courses/{id}',[CourseController::class,'destroy'])->name('courses.destroy');
 
-
-
+//Prof crud
+Route::get('instructors',[\App\Http\Controllers\InstructorController::class,'index'])->name('instructors.index');
+Route::get('add-instructor',[\App\Http\Controllers\InstructorController::class,'create'])->name('instructors.create');
+Route::post('/instructors',[\App\Http\Controllers\InstructorController::class,'store'])->name('instructors.store');
+Route::get('/instructors/{id}',[\App\Http\Controllers\InstructorController::class,'destroy']);
+Route::get('/instructor/edit/{id}',[\App\Http\Controllers\InstructorController::class,'edit']);
+Route::post('/instructor/{id}',[\App\Http\Controllers\InstructorController::class,'update']);

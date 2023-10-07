@@ -25,9 +25,9 @@
                 </a>
             </li>
             <li>
-                <a href="./map.html">
-                    <i class="tim-icons icon-pin"></i>
-                    <p>Maps</p>
+                <a href="{{route('instructors.index')}}">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>Instructors</p>
                 </a>
             </li>
             <li>
