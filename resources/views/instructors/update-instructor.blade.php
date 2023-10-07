@@ -6,7 +6,7 @@
     <div >
         <div class="card">
             <div class="card-header">
-                <h5 class="title">Update Courses</h5>
+                <h5 class="title">Edit Instructor's Data</h5>
             </div>
             <div class="card-body">
                 <form method="post" action="{{url('instructor')}}/{{$instructor['id']}}/" enctype="multipart/form-data">
@@ -22,7 +22,7 @@
                         <div class="col-md-4 pl-md-1">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="text" class="form-control" placeholder="{{$instructor->email}}"  name="email" required>
+                                <input type="email" class="form-control" placeholder="{{$instructor->email}}"  name="email" required>
                             </div>
                         </div>
                     </div>

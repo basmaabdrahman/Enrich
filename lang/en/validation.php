@@ -149,6 +149,11 @@ return [
         'price'=>[
             'required' => 'A Price is required',
             ],
+        'phone'=>[
+            'required'=>'please,enter your phone number',
+            'unique'=>'please, enter valid phone number',
+            'max'=>'your phone number should be 11 number',
+        ],
     ],
 
     /*

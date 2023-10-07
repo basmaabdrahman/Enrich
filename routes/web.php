@@ -32,3 +32,12 @@ Route::post('/instructors',[\App\Http\Controllers\InstructorController::class,'s
 Route::get('/instructors/{id}',[\App\Http\Controllers\InstructorController::class,'destroy']);
 Route::get('/instructor/edit/{id}',[\App\Http\Controllers\InstructorController::class,'edit']);
 Route::post('/instructor/{id}',[\App\Http\Controllers\InstructorController::class,'update']);
+
+//student crud
+Route::get('/students',[\App\Http\Controllers\StudentController::class,'index'])->name('students.index');
+Route::get('add-students',[\App\Http\Controllers\StudentController::class,'create'])->name('students.create');
+Route::post('/students',[\App\Http\Controllers\StudentController::class,'store']);
+Route::get('student/edit/{id}',[\App\Http\Controllers\StudentController::class,'edit']);
+Route::post('student/{id}',[\App\Http\Controllers\StudentController::class,'update']);
+Route::get('students/{id}',[\App\Http\Controllers\StudentController::class,'destroy']);
+

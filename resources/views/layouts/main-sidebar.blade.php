@@ -31,9 +31,9 @@
                 </a>
             </li>
             <li>
-                <a href="./notifications.html">
-                    <i class="tim-icons icon-bell-55"></i>
-                    <p>Notifications</p>
+                <a href="{{route('students.index')}}">
+                    <i class="tim-icons icon-single-02"></i>
+                    <p>Students</p>
                 </a>
             </li>
             <li>
