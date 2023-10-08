@@ -7,33 +7,20 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         $reviews=Review::all();
         return view('reviews.index',compact('reviews'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('reviews.add-review');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
 
@@ -45,12 +32,7 @@ class ReviewController extends Controller
         return redirect('reviews');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function show($id)
     {
         //
