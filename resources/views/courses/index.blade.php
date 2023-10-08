@@ -37,7 +37,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-footer">
-                        <a href="{{route('courses.create')}}"><button type="submit" class="btn btn-fill btn-success" >New Course</button></a>
+                        <a href="{{url('courses/create')}}" class="btn btn-fill btn-success" >New Course</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table tablesorter " id="">
@@ -72,8 +72,9 @@
                                 </td>
                                 <td>
                                     <div class="card-footer">
-                                        <a href="{{url('courses/edit')}}/{{$course->id}}"><button type="submit" class="btn  btn-primary" >Update</button></a>
-                                        <a href="{{url('courses')}}/{{$course->id}}"><button type="submit" class="btn  btn-danger" >Delete</button></a>
+                                        <a href="{{url('courses')}}/{{$course->id}}/edit" class="btn  btn-primary" >Update</a>
+
+                                        <a href="{{url('course')}}/{{$course->id}}"class="btn  btn-danger" method='delete'>Delete</a>
 
                                     </div>
                                 </td>

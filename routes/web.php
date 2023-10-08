@@ -1,43 +1,38 @@
 <?php
 
-use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('home');
 });
 //courses crud
-Route::get('/courses',[CourseController::class,'index'])->name('courses.index');
-Route::get('add-course',[CourseController::class,'create'])->name('courses.create');
-Route::post('/courses',[CourseController::class,'store'])->name('courses.store');
-Route::get('/courses/edit/{id}',[CourseController::class,'edit'])->name('courses.edit');
-Route::post('/courses/{id}',[CourseController::class,'update'])->name('courses.update');
-Route::get('/courses/{id}',[CourseController::class,'destroy'])->name('courses.destroy');
+Route::resource('/courses','\App\Http\Controllers\CourseController');
+Route::post('/courses',[\App\Http\Controllers\CourseController::class,'store'])->name('courses.store');
+Route::post('/courses/{id}',[\App\Http\Controllers\CourseController::class,'update'])->name('courses.update');
+Route::get('course/{id}',[\App\Http\Controllers\CourseController::class,'destroy']);
 
 //Prof crud
-Route::get('instructors',[\App\Http\Controllers\InstructorController::class,'index'])->name('instructors.index');
-Route::get('add-instructor',[\App\Http\Controllers\InstructorController::class,'create'])->name('instructors.create');
+Route::resource('/instructors','\App\Http\Controllers\InstructorController');
 Route::post('/instructors',[\App\Http\Controllers\InstructorController::class,'store'])->name('instructors.store');
-Route::get('/instructors/{id}',[\App\Http\Controllers\InstructorController::class,'destroy']);
-Route::get('/instructor/edit/{id}',[\App\Http\Controllers\InstructorController::class,'edit']);
+Route::get('instructor/{id}',[\App\Http\Controllers\InstructorController::class,'destroy']);
 Route::post('/instructor/{id}',[\App\Http\Controllers\InstructorController::class,'update']);
 
 //student crud
-Route::get('/students',[\App\Http\Controllers\StudentController::class,'index'])->name('students.index');
-Route::get('add-students',[\App\Http\Controllers\StudentController::class,'create'])->name('students.create');
+Route::resource('/students','\App\Http\Controllers\StudentController');
 Route::post('/students',[\App\Http\Controllers\StudentController::class,'store']);
-Route::get('student/edit/{id}',[\App\Http\Controllers\StudentController::class,'edit']);
 Route::post('student/{id}',[\App\Http\Controllers\StudentController::class,'update']);
-Route::get('students/{id}',[\App\Http\Controllers\StudentController::class,'destroy']);
+Route::get('student/{id}',[\App\Http\Controllers\StudentController::class,'destroy']);
 
+//video crud
+
+Route::resource('/videos','\App\Http\Controllers\VideoController');
+Route::post('videos',[\App\Http\Controllers\VideoController::class,'store']);
+Route::get('/video/{id}',[\App\Http\Controllers\VideoController::class,'destroy']);
+Route::post('videos/{id}',[\App\Http\Controllers\VideoController::class,'update']);
+//review
+Route::resource('/reviews','\App\Http\Controllers\ReviewController');
+Route::post('reviews',[\App\Http\Controllers\ReviewController::class,'store'])->name('reviews.store');
+Route::get('/review/{id}',[\App\Http\Controllers\ReviewController::class,'destroy']);
+Route::post('reviews/{id}',[\App\Http\Controllers\ReviewController::class,'update']);

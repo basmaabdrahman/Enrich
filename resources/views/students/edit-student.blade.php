@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    New Course
+Edit information
 @endsection
 @section('content')
     @section('content')

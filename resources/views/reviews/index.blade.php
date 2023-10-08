@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Our Instructors
+Reviews
 @endsection
 @section('content')
 
@@ -8,25 +8,26 @@
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                    <h4 class="card-title">Our Instructors</h4>
+                    <h4 class="card-title">Reviews</h4>
                 </div>
                 <div class="card-body">
                     <div class="card-footer">
-                        <a href="{{route('instructors.create')}}"><button type="submit" class="btn btn-fill btn-success" >Add Instructor</button></a>
+                        <a href="{{url('reviews/create')}}"class="btn btn-fill btn-success"  >Add Review</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table tablesorter " id="">
                             <thead class=" text-primary">
                             <tr>
                                 <th>
-                                    Name
+                                    Student Name
                                 </th>
                                 <th>
-                                    Email
+                                    Review
                                 </th>
                                 <th>
-                                    Image
+                                    Star
                                 </th>
+
                                 <th>
                                     operations
                                 </th>
@@ -34,26 +35,28 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($instructors as $prof)
+                               @foreach($reviews as $review)
                                 <tr>
                                     <td>
-                                        {{$prof->name}}
+                                        {{$review->client_name}}
                                     </td>
                                     <td>
-                                        {{$prof->email}}
+                                        {{$review->review}}
                                     </td>
                                     <td>
-                                       <img src="{{asset('storage/images/instructors/'.$prof->img)}}" width='50' height="50" class="img img-responsive">
+                                        {{$review->star_number}}
                                     </td>
+
                                     <td>
                                         <div class="card-footer">
-                                            <a href="{{url('instructor/edit')}}/{{$prof->id}}"><button type="submit" class="btn  btn-primary" >Update</button></a>
-                                            <a href="{{url('instructors')}}/{{$prof->id}}"><button type="submit" class="btn  btn-danger" >Delete</button></a>
+                                            <a href="{{url('reviews')}}/{{$review->id}}/edit" class="btn  btn-primary" >Update</a>
+                                            <a href="{{url('review')}}/{{$review->id}}" class="btn  btn-danger" >Delete</a>
 
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
+
                             </tbody>
                         </table>
                     </div>

@@ -19,53 +19,37 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('courses.index')}}">
+                <a href="{{url('/courses')}}">
                     <i class="tim-icons icon-atom"></i>
                     <p>Courses</p>
                 </a>
             </li>
             <li>
-                <a href="{{route('instructors.index')}}">
+                <a href="{{url('/instructors')}}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>Instructors</p>
                 </a>
             </li>
             <li>
-                <a href="{{route('students.index')}}">
+                <a href="{{url('/students')}}">
                     <i class="tim-icons icon-single-02"></i>
                     <p>Students</p>
                 </a>
             </li>
+
             <li>
-                <a href="./user.html">
-                    <i class="tim-icons icon-single-02"></i>
-                    <p>User Profile</p>
-                </a>
-            </li>
-            <li>
-                <a href="./tables.html">
+                <a href="{{url('/videos')}}">
                     <i class="tim-icons icon-puzzle-10"></i>
-                    <p>Table List</p>
+                    <p>Video List</p>
                 </a>
             </li>
             <li>
-                <a href="./typography.html">
+                <a href="{{url('reviews')}}">
                     <i class="tim-icons icon-align-center"></i>
-                    <p>Typography</p>
+                    <p>Reviews</p>
                 </a>
             </li>
-            <li>
-                <a href="./rtl.html">
-                    <i class="tim-icons icon-world"></i>
-                    <p>RTL Support</p>
-                </a>
-            </li>
-            <li class="active-pro">
-                <a href="./upgrade.html">
-                    <i class="tim-icons icon-spaceship"></i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li>
+            
         </ul>
     </div>
 </div>

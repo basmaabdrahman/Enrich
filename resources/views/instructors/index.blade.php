@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-Students
+    Our Instructors
 @endsection
 @section('content')
 
@@ -8,11 +8,11 @@ Students
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header">
-                    <h4 class="card-title">Students</h4>
+                    <h4 class="card-title">Our Instructors</h4>
                 </div>
                 <div class="card-body">
                     <div class="card-footer">
-                        <a href="{{route('students.create')}}"><button type="submit" class="btn btn-fill btn-success"  >Add Student</button></a>
+                        <a href="{{url('instructors/create')}}" class="btn btn-fill btn-success" >Add Instructor</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table tablesorter " id="">
@@ -25,9 +25,6 @@ Students
                                     Email
                                 </th>
                                 <th>
-                                    Phone
-                                </th>
-                                <th>
                                     Image
                                 </th>
                                 <th>
@@ -37,24 +34,21 @@ Students
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($students as $student)
+                            @foreach($instructors as $prof)
                                 <tr>
                                     <td>
-                                        {{$student->name}}
+                                        {{$prof->name}}
                                     </td>
                                     <td>
-                                        {{$student->email}}
+                                        {{$prof->email}}
                                     </td>
                                     <td>
-                                        {{$student->phone}}
-                                    </td>
-                                    <td>
-                                        <img src="{{asset('storage/images/Students/'.$student->img)}}" width='50' height="50" class="img img-responsive">
+                                       <img src="{{asset('storage/images/instructors/'.$prof->img)}}" width='50' height="50" class="img img-responsive">
                                     </td>
                                     <td>
                                         <div class="card-footer">
-                                            <a href="{{url('student/edit')}}/{{$student->id}}"><button type="submit" class="btn  btn-primary" >Update</button></a>
-                                            <a href="{{url('students')}}/{{$student->id}}"><button type="submit" class="btn  btn-danger" >Delete</button></a>
+                                            <a href="{{url('instructors')}}/{{$prof->id}}/edit" class="btn  btn-primary" >Update</a>
+                                            <a href="{{url('instructor')}}/{{$prof->id}}" class="btn  btn-danger" >Delete</a>
 
                                         </div>
                                     </td>
