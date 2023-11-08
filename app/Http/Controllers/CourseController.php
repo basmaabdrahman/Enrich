@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\courseDataTable;
 use App\Http\Requests\StoreCourseRequest;
 use App\Models\Course;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class CourseController extends Controller
 {
-    public function index()
+    public function index(CourseDataTable $dataTable)
     {
-        $courses=Course::all();
-        return view('courses.index',compact('courses'));
+        return $dataTable->render('courses.index');
 
     }
-
+    public function getcourse(courseDataTable $dataTable){
+        return DataTables::of(Course::query())->make('true');
+    }
 
     public function create()
     {

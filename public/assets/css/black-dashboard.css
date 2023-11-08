@@ -1670,7 +1670,7 @@ pre code {
 
 .table-bordered th,
 .table-bordered td {
-  border: 0.0625rem solid #e3e3e3;
+  border: 0.0625rem solid #944b4b;
 }
 
 .table-bordered thead th,
@@ -1726,11 +1726,11 @@ pre code {
 .table-secondary td,
 .table-secondary thead th,
 .table-secondary tbody+tbody {
-  border-color: #f9fafb;
+  border-color: #224b75;
 }
 
 .table-hover .table-secondary:hover {
-  background-color: #ededf3;
+  background-color: #32327e;
 }
 
 .table-hover .table-secondary:hover>td,
@@ -2105,7 +2105,7 @@ pre code {
   background-color: #ffffff;
   border-color: rgba(50, 151, 211, 0.25);
   outline: 0;
-  box-shadow: none, none;
+  box-shadow: none;
 }
 
 .form-control::placeholder {
@@ -2193,12 +2193,7 @@ select.form-control[multiple] {
 }
 
 textarea.form-control {
-    width: 200%;
-    height: 300px;
-    border-radius: 4px;
-    color:#6c757c;
-    font-size: 16px;
-    background-color: transparent;
+  height: auto;
 }
 
 .form-group {
@@ -4415,9 +4410,6 @@ input[type="button"].btn-block {
 .custom-select:disabled {
   color: #6c757d;
   background-color: #e9ecef;
-}
-.checked {
-    color: orange;
 }
 
 .custom-select::-ms-expand {

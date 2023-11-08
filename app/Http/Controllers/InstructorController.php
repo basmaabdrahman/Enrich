@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\InstructorDataTable;
 use App\Http\Requests\StoreInstructorRequest;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class InstructorController extends Controller
 {
 
-    public function index()
+    public function index(InstructorDataTable $dataTable)
     {
-        $instructors=Instructor::all();
-        return view('instructors.index',compact('instructors'));
+        return $dataTable->render('instructors.index');
+
     }
 
 

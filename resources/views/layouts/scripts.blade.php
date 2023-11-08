@@ -38,21 +38,21 @@
         </ul>
     </div>
 </div>
-
-<script src="{{asset('/assets/js/core/jquery.min.js')}}"></script>
-<script src="{{asset('/assets/js/core/popper.min.js')}}"></script>
-<script src="{{asset('/assets/js/core/bootstrap.min.js')}}"></script>
-<script src="{{asset('/assets/js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!--  Google Maps Plugin    -->
 <!-- Place this tag in your head or just before your close body tag. -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 <!-- Chart JS -->
-<script src="{{asset('/assets/js/plugins/chartjs.min.js')}}"></script>
+<script src="../assets/js/plugins/chartjs.min.js"></script>
 <!--  Notifications Plugin    -->
-<script src="{{asset('/assets/js/plugins/bootstrap-notify.j')}}."></script>
+<script src="../assets/js/plugins/bootstrap-notify.js"></script>
 <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{asset('/assets/js/black-dashboard.min.js?v=1.0.0')}}"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{asset('/assets/demo/demo.js')}}"></script>
+<script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/demo/demo.js"></script>
 <script>
     $(document).ready(function() {
         $().ready(function() {
@@ -179,3 +179,87 @@
         application: "black-dashboard-free"
     });
 </script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
+<script>
+    $(function() {
+        var table = $('#datacustom').DataTable({
+            dom:"Bfrtip",
+            processing: true,
+            serverSide: true,
+            ajax: {
+                "url": "{{route('courses.index')}}"
+                , 'type': "GET",
+                error: function (msg) {
+                    var errors = msg.responseJson;
+                    console.log(errors);
+                },
+            },
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'name', name: 'name'},
+                {data: 'content', name: 'content'},
+                {data: 'price', name: 'price'},
+            ],
+        });
+
+    });
+    $(function() {
+        var table = $('#videocustom').DataTable({
+            dom:"Bfrtip",
+            processing: true,
+            serverSide: true,
+            ajax: {
+                "url": "{{route('videos.index')}}"
+                , 'type': "GET",
+                error: function (msg) {
+                    var errors = msg.responseJson;
+                    console.log(errors);
+                },
+            },
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'name', name: 'name'},
+                {data: 'img', name: 'img'},
+                {data: 'video', name: 'video'},
+                {data: 'action', name: 'action'},
+            ],
+        });
+
+    });
+    $(function() {
+        var table = $('#reviewcustom').DataTable({
+            dom:"Bfrtip",
+            processing: true,
+            serverSide: true,
+            ajax: {
+                "url": "{{route('reviews.index')}}"
+                , 'type': "GET",
+                error: function (msg) {
+                    var errors = msg.responseJson;
+                    console.log(errors);
+                },
+            },
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'review', name: 'review'},
+                {data: 'star_number', name: 'star_number'},
+                {data: 'client_name', name: 'client_name'},
+                {data: 'action', name: 'action'},
+            ],
+        });
+
+    });
+</script>
+@stack('scripts')
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+

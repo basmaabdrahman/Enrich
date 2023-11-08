@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\VideoDataTable;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class VideoController extends Controller
 {
 
-    public function index()
+    public function index(VideoDataTable $dataTable)
     {
-        $videos=Video::all();
-        return view('videos.index',compact('videos'));
+        return $dataTable->render('videos.index');
+
+    }
+    public function getVideo(VideoDataTable $dataTable){
+        return DataTables::of(Video::query())
+            ->toJson();
     }
 
 

@@ -2,25 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\ReviewDataTable;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class ReviewController extends Controller
 {
-    
-    public function index()
+
+    public function index(ReviewDataTable $dataTable)
     {
-        $reviews=Review::all();
-        return view('reviews.index',compact('reviews'));
+        return $dataTable->render('reviews.index');
+
+    }
+    public function getReview(ReviewDataTable $dataTable){
+        return DataTables::of(Review::query())->make('true');
     }
 
-    
+
     public function create()
     {
         return view('reviews.add-review');
     }
 
-    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
 
@@ -32,7 +42,7 @@ class ReviewController extends Controller
         return redirect('reviews');
     }
 
-   
+
     public function show($id)
     {
         //

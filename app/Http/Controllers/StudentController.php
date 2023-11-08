@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\StudentDataTable;
 use App\Http\Requests\StoreStudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Yajra\DataTables\DataTables;
 
 
 class StudentController extends Controller
 {
 
 
-    public function index()
+    public function index(StudentDataTable $dataTable)
     {
-        $students=Student::all();
-        return view('students.index',compact('students'));
+        return $dataTable->render('students.index');
+
+    }
+    public function getStudent(StudentDataTable $dataTable){
+        return DataTables::of(Student::query())->make('true');
     }
 
 

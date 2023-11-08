@@ -49,10 +49,18 @@
                         </p>
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
+                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">{{Auth::user()->name}}</a></li>
+                        <li class="nav-link"><a  href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
                         <li class="dropdown-divider"></li>
-                        <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Log out</a></li>
+                        <li class="nav-link"><form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <x-dropdown-link :href="route('logout')"
+                                                 onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                    {{ __('Log Out') }}
+                                </x-dropdown-link>
+                            </form></li>
                     </ul>
                 </li>
                 <li class="separator d-lg-none"></li>
