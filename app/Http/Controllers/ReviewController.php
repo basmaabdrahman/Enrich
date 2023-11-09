@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class ReviewController extends Controller
 {
     
-    public function index()
+    public function index(ReviewDataTable $dataTable)
     {
-        $reviews=Review::all();
-        return view('reviews.index',compact('reviews'));
+        return $dataTable->render('reviews.index');
+
     }
 
     
