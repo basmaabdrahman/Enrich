@@ -29,16 +29,14 @@ class VideoController extends Controller
 
     public function store(Request $request)
     {
-        $validated=$request->validate([
-            'video'=>'required|mimes:mp4',
-        ]);
+
         $file_name=time().'.'.$request->file('video')->extension();
         $path=$request->file('video')->move(public_path('storage/videos/video'),$file_name);
         $image_name=time().'.'.$request->file('img')->extension();
         $image_path=$request->file('img')->move(public_path('storage/videos/images'),$image_name);
         Video::create([
             'name'=>$request->name,
-            'img'=>$image_name,
+            'image'=>$image_name,
             'video'=>$file_name,
         ]);
         return redirect('/videos');
@@ -70,15 +68,15 @@ class VideoController extends Controller
             'img'=>$image_name,
             'video'=>$file_name,
         ]);
-            return redirect('/');
+        return redirect('/');
 
     }
 
 
     public function destroy($id)
     {
-       $video= Video::find($id);
-       $video->delete();
-       return redirect('/videos');
+        $video= Video::find($id);
+        $video->delete();
+        return redirect('/videos');
     }
 }

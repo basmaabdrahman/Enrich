@@ -52,7 +52,7 @@ class VideoDataTable extends DataTable
         return [
             Column::make('id'),
             Column::make('name'),
-            Column::make('img'),
+            Column::make('image'),
             Column::make('video'),
             Column::make('created_at'),
             Column::make('updated_at'),

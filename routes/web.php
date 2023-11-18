@@ -70,6 +70,9 @@ Route::resource('/students','\App\Http\Controllers\StudentController');
 Route::post('/students',[\App\Http\Controllers\StudentController::class,'store']);
 Route::post('student/{id}',[\App\Http\Controllers\StudentController::class,'update']);
 Route::get('student/{id}',[\App\Http\Controllers\StudentController::class,'destroy']);
+Route::get('student/download/{id}',[\App\Http\Controllers\StudentController::class,'download']);
+Route::get('/downloads',[\App\Http\Controllers\StudentController::class,'downloads']);
+Route::get('re-image/{id}',[\App\Http\Controllers\StudentController::class,'re_img']);
 
 //video crud
 

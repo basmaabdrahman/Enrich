@@ -6,6 +6,8 @@ use App\DataTables\StudentDataTable;
 use App\Http\Requests\StoreStudentRequest;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\Support\MediaStream;
 use Yajra\DataTables\DataTables;
 
 
@@ -13,9 +15,11 @@ class StudentController extends Controller
 {
 
 
-    public function index(StudentDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('students.index');
+        $students=Student::all();
+        return view('students.index',compact('students'));
+        //return $dataTable->render('students.index');
 
     }
     public function getStudent(StudentDataTable $dataTable){
@@ -32,20 +36,17 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $validated=$request->validated();
-        if($request->hasFile('img')){
-            $file_name=time().'.'.$request->img->extension();
-            $path=$request['img']->move(public_path('storage/images/Students'),$file_name);
-            Student::create([
+
+            $student=Student::create([
                 'name'=>$request['name'],
                 'email'=>$request['email'],
                 'phone'=>$request['phone'],
-                'img'=>$file_name,
             ]);
-        }
-        else{
-            return view('students.add-student');
-        }
-        return redirect('/students');
+            if ($request->hasFile('img')) {
+                $student->addMediaFromRequest('img')->withResponsiveImages()
+                    ->ToMediaCollection('students');
+            }
+            return redirect('/students');
     }
 
 
@@ -67,18 +68,18 @@ class StudentController extends Controller
     {
         $id=$request->id;
         $student=Student::find($id);
-        if($request->hasFile('img')){
-            $file_name=time().'.'.$request->img->extension();
-            $path=$request->file('img')->move(public_path('storage/images/Students'),$file_name);
+        if ($request->hasFile('img')){
+           //$student->clearMediaCollection('students');
+           $student->addMediaFromRequest('img')->withResponsiveImages()
+               ->ToMediaCollection('students');
             $student->update([
                 'name'=>$request->name,
                 'email'=>$request->email,
                 'phone'=>$request->phone,
-                'img'=>$file_name,
             ]);
         }
         else{
-            return view('students.edit-student',compact('student'));
+            return false;
         }
         return redirect('/students');
     }
@@ -89,6 +90,19 @@ class StudentController extends Controller
         $student=Student::find($id);
         $student->delete();
         return redirect('students');
+    }
+    public function download($id){
+        $student=Student::find($id);
+        $media=$student->getFirstMedia('students');
+        return $media;
+    }
+    public function downloads(){
+        //$media=Media::where('collection_name','=','students')->get();
+        return MediaStream::create('downloads.zip')->addMedia(Media::all());
+    }
+    public function re_img($id){
+        $student=Student::find($id);
+        return view('students.show',compact('student'));
     }
 }
 

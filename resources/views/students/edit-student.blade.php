@@ -49,7 +49,9 @@ Edit information
                     <div class="row">
                         <div class="col-md-12">
                             <div >
+
                                 <label>Student Image</label><br>
+                                <img class="photo" alt="student Photo" src="{{$student->getFirstMediaUrl()}}" />
                                 <input type="file"   value="upload image" name="img">
                             </div>
                         </div>

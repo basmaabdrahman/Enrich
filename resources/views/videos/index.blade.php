@@ -6,6 +6,9 @@
         <div class="card">
             <div class="card-header">Manage Users</div>
             <div class="card-body">
+            <div class="card-footer">
+                                                            <a href="{{url('videos/create')}}" class="btn btn-fill btn-success"  >Add Video</a>
+                                                        </div>
              <div class="table-responsive">
                                 <table class="table tablesorter " id="">
                 {{ $dataTable->table() }}

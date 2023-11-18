@@ -10,7 +10,7 @@ class StoreInstructorRequest extends FormRequest
     public function rules()
     {
         return [
-            ''=>'required|max:255',
+            'name'=>'required|max:255',
             'email'=>'required|unique:instructors',
             'img'=>'required|mimes:jpg,png',
         ];

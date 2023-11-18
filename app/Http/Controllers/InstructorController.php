@@ -6,14 +6,17 @@ use App\DataTables\InstructorDataTable;
 use App\Http\Requests\StoreInstructorRequest;
 use App\Models\Instructor;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\In;
 use Yajra\DataTables\DataTables;
 
 class InstructorController extends Controller
 {
 
-    public function index(InstructorDataTable $dataTable)
+    public function index()
     {
-        return $dataTable->render('instructors.index');
+        $instructors=Instructor::all();
+        return view('instructors.index',compact('instructors'));
+        //return $dataTable->render('instructors.index');
 
     }
 
@@ -23,19 +26,15 @@ class InstructorController extends Controller
         return view('instructors.add-instructor');
     }
 
-       public function store(Request $request)
-    {
-
-
-        $file_name=time().'.'.$request->file('img')->extension();
-        $path=$request->file('img')->move(public_path('storage/images/instructors'),$file_name);
-
-
-            Instructor::create([
+       public function store(StoreInstructorRequest $request)
+       {
+$validate=$request->validated();
+            $teacher=Instructor::create([
                 'name' => $request->username,
                 'email' => $request->email,
-                'img'=>$file_name,
+
             ]);
+            $teacher->addMediaFromRequest('img')->withResponsiveImages()->toMediaCollection('instructors');
             return redirect('/instructors');
 
         }
@@ -58,13 +57,13 @@ class InstructorController extends Controller
     public function update(Request $request, $id)
     {
         $instructor=Instructor::find($id);
-        $file_name=time().'.'.$request->file('img')->extension();
-        $path=$request->file('img')->move(public_path('storage/images/instructors'),$file_name);
-        $instructor->update([
-            'name'=>$request['name'],
-            'email'=>$request['email'],
-            'img'=>$file_name
-        ]);
+        if($request->hasFile('img')) {
+            $instructor->addMediaFromRequest('img')->withResponsiveImages()->toMediaCollection('instructors');
+            $instructor->update([
+                'name' => $request['name'],
+                'email' => $request['email'],
+            ]);
+        }
         return redirect('/instructors');
     }
 
