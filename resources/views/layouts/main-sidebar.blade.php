@@ -18,6 +18,7 @@
                     <p>Dashboard</p>
                 </a>
             </li>
+
             <li>
                 <a href="{{route('admin.roles.index')}}">
                     <i class="tim-icons icon-atom"></i>
@@ -37,6 +38,7 @@
                     <p>Users</p>
                 </a>
             </li>
+
             <li>
                 <a href="{{route('courses.index')}}">
                     <i class="tim-icons icon-puzzle-10"></i>

@@ -6,9 +6,11 @@
         <div class="card">
             <div class="card-header">Manage Users</div>
             <div class="card-body">
+            @can('Add-Instructor')
             <div class="card-footer">
                 <a href="{{url('instructors/create')}}" class="btn btn-fill btn-success"  >Add Instructor</a>
             </div>
+            @endcan
              <div class="table-responsive">
                                 <table class="table tablesorter " id="">
                                   <thead class=" text-primary">

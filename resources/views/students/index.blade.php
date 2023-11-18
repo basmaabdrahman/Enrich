@@ -6,9 +6,11 @@
         <div class="card">
             <div class="card-header">Manage Users</div>
             <div class="card-body">
+            @can('Add-Student')
             <div class="card-footer">
                 <a href="{{url('students/create')}}" class="btn btn-fill btn-success"  >Add Student</a>
             </div>
+            @endcan
              <div class="table-responsive">
                                 <table class="table tablesorter " id="">
                                   <thead class=" text-primary">
@@ -51,6 +53,7 @@
                                                                             <td class="center-text">
                                                                               <img class="photo" src="{{$student->getFirstMedia('students')->getUrl('thumb')}}"/>
                                                                             </td>
+                                                                            @can('edit-deleteStudent')
                                                                             <td>
                                                                            <a href="{{url('students/'.$student->id.'/edit/')}}"class="btn btn-fill btn-primary"  >Edit</a>
                                                                             <a href="{{url('student/'.$student['id'])}}"class="btn btn-fill btn-danger"  >Delete</a>
