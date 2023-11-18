@@ -59,6 +59,7 @@
                                                                             <a href="{{url('student/'.$student['id'])}}"class="btn btn-fill btn-danger"  >Delete</a>
 
                                                                             </td>
+                                                                            @endcan
                                                                           </tr>
                                                                           @endforeach
                                                                         </tbody>
